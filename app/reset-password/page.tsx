@@ -2,28 +2,32 @@
 
 import { useEffect, useState } from "react"
 
-interface Video {
-    video: {
-      id: string,
-      time: number,
-      active: boolean,
-      lastUpdate: number
-    }
-  }
-
 export default function Page() {
-    const [userVideo, setUserVideo] = useState<Video | null>(null);
+    const [loggedIn, setLoggedIn] = useState(false);
 
+    
     useEffect(() => {
-        fetch(`https://youtube-friends.onrender.com/api/get-user-video`)
-                .then((res) => res.json())
-                .then((data) => {
-                  setUserVideo(data);
-                })
-      .catch(error => console.error('Error:', error));
+        fetch("https://youtube-friends.onrender.com/api/login", {
+            method: "POST",
+            mode: "cors",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                email: 'studiomodvis@gmail.com',
+                password: 'modvis123'
+            }),
+        })
+        .then(res => res.json())
+        .then(data => {
+            if (data.id !== undefined) {
+                setLoggedIn(true);
+                return;
+            }
+        });
     }, []);
 
     return(
-        <p>{userVideo?.video.id}</p>
+        <p>{loggedIn}</p>
     )
 }
