@@ -6,7 +6,7 @@ export default function Page() {
     const [loggedIn, setLoggedIn] = useState(false);
 
     
-    useEffect(() => {
+    const login = () => {
         fetch("https://youtube-friends.onrender.com/api/login", {
             method: "POST",
             mode: "cors",
@@ -25,9 +25,12 @@ export default function Page() {
                 return;
             }
         });
-    }, []);
+    }
 
     return(
-        <p>{loggedIn}</p>
+        <>
+            <button onClick={login}>LogIn</button>
+            {loggedIn && <p>Logged In</p>}
+        </>
     )
 }
