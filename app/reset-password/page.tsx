@@ -19,7 +19,6 @@ export default function Page() {
     const login = () => {
         fetch("https://youtube-friends.onrender.com/api/login", {
             method: "POST",
-            credentials: "include",
             headers: {
                 "Content-Type": "application/json",
             },
