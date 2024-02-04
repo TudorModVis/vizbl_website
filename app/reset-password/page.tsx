@@ -19,7 +19,6 @@ export default function Page() {
     const login = () => {
         fetch("https://youtube-friends.onrender.com/api/login", {
             method: "POST",
-            mode: "cors",
             credentials: "include",
             headers: {
                 "Content-Type": "application/json",
@@ -40,7 +39,9 @@ export default function Page() {
     }
 
     const updateUserVideo = () => {
-        fetch(`https://youtube-friends.onrender.com/api/get-user-video`)
+        fetch(`https://youtube-friends.onrender.com/api/get-user-video`, {
+            credentials: "include",
+        })
                   .then((res) => res.json())
                   .then((data) => {
                     setUserVideo(data);
