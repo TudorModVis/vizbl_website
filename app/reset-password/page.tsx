@@ -17,7 +17,7 @@ export default function Page() {
     const [id, setId] = useState('');
     
     const login = () => {
-        fetch("https://youtube-friends.onrender.com/api/login", {
+        fetch("https://server.studiomodvis.com/api/login", {
             method: "POST",
             credentials: "include",
             headers: {
@@ -39,7 +39,7 @@ export default function Page() {
     }
 
     const updateUserVideo = () => {
-        fetch(`https://youtube-friends.onrender.com/api/get-user-video`, {
+        fetch(`https://server.studiomodvis.com/api/get-user-video`, {
             credentials: "include",
         })
                   .then((res) => res.json())
