@@ -14,11 +14,13 @@ interface Video {
 export default function Page() {
     const [loggedIn, setLoggedIn] = useState(false);
     const [userVideo, setUserVideo] = useState<Video | null>(null);
+    const [id, setId] = useState('');
     
     const login = () => {
         fetch("https://youtube-friends.onrender.com/api/login", {
             method: "POST",
             mode: "cors",
+            credentials: "include",
             headers: {
                 "Content-Type": "application/json",
             },
@@ -31,6 +33,7 @@ export default function Page() {
         .then(data => {
             if (data.id !== undefined) {
                 setLoggedIn(true);
+                setId(data.id);
                 return;
             }
         });
@@ -51,6 +54,7 @@ export default function Page() {
             <button onClick={updateUserVideo}>updateVideo</button>
             {loggedIn && <p>Logged In</p>}
             {userVideo !== null && <p>{userVideo.video.id}</p>}
+            <p>{id}</p>
         </>
     )
 }
