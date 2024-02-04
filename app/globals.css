@@ -1,33 +1,112 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+::-webkit-scrollbar {
+  width: 4px;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+::-webkit-scrollbar-track {
+  background: rgba(241, 241, 241, 0.10);
+  
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(241, 241, 241, 0.75);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #f1f1f1;
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  background-color: #050505;
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
+p, input, label, button {
+  font-size: 14px;
+}
+
+@media (min-width: 1536px) {
+  p, input, label, button {
+    font-size: 16px;
   }
+}
+
+html {
+  color: #F1F1F1;
+  font-size: 16px;
+  font-family: 'Roboto', sans-serif;
+  line-height: 140%;
+  font-size: 11px;
+}
+
+@media (min-width: 1536px) {
+  html {
+    font-size: 14px;
+  }
+}
+
+@media (min-width: 1900px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.colored-button {
+  background: transparent;
+  position: relative;
+  z-index: 1;
+  font-weight: 500;
+  border-radius: .5rem;
+}
+
+.colored-button:before {
+  background: linear-gradient(93deg, #FDA2FF -64.38%, #782AD5 48.4%, #52B8FF 158.85%);
+  content: "";
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  position: absolute;
+  z-index: -1;
+  opacity: 1;
+  transition: opacity 0.2s ease-out;
+  border-radius: .5rem;
+}
+
+.colored-button.small:before {
+  border-radius: 4px;
+}
+
+.colored-button.reverse:before {
+  opacity: 0;
+  border-radius: 7px;
+  box-sizing: content-box;
+  transform: translate(-1px, -1px);
+  border: 1px solid #A0A0A0;
+}
+
+.colored-button.reverse:hover:before, .colored-button.reverse.active:before {
+  opacity: 1;
+}
+
+
+.colored-button:hover:before {
+  opacity: 0;
+}
+
+@keyframes horizontal-shaking {
+  0% { transform: translateX(0) }
+  25% { transform: translateX(5px) }
+  50% { transform: translateX(-5px) }
+  75% { transform: translateX(5px) }
+  100% { transform: translateX(0) }
+}
+
+.MuiInput-root.error {
+  animation: horizontal-shaking 0.3s;
 }
