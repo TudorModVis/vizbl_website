@@ -43,6 +43,7 @@ export default function Page({ params }: { params: { token: string } }) {
             headers: {
                 "Content-Type": "application/json",
             },
+            credentials: 'include',
             body: JSON.stringify({
                 token: params.token
             }),
