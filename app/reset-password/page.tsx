@@ -54,7 +54,7 @@ export default function Page() {
             <button onClick={login}>LogIn</button>
             <button onClick={updateUserVideo}>updateVideo</button>
             {loggedIn && <p>Logged In</p>}
-            {userVideo !== null && <p>{userVideo.video.id}</p>}
+            {userVideo !== null && <p>sasati</p>}
             <p>{id}</p>
         </>
     )
