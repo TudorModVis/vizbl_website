@@ -11,7 +11,6 @@ const StyledInput = styled('input')({
   color: 'inherit',
   backgroundColor: 'transparent',
   fontFamily: 'inherit',
-  fontSize: '1.125rem',
   fontStyle: 'inherit',
   fontWeight: 'inherit',
   lineHeight: 'inherit',

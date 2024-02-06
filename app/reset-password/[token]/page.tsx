@@ -68,20 +68,14 @@ export default function Page({ params }: { params: { token: string } }) {
         })
     }
 
-    const PasswordPanel = () => {
-        return (
-            <div className="bg-semi-black rounded-md border border-gray w-[40rem] flex flex-col items-center pt-6 pb-12 px-16">
-                <img src="/images/models/lock.png" alt="lock" className="w-60" />
-                <p className="font-bold text-5xl leading-[140%] mb-6">RESET PASSWORD</p>
-                <p className="text-gray font-bold leading-[140%] text-center mb-12 small">Write a new password that doesn’t match your previous one. (and remember it this time)</p>
-                <PasswordField label="New Password*" password={newPassword} setPassword={setNewPassword} error={newPasswordError} setError={setNewPasswordError}/>
-                <PasswordField label="Confirm New Password*" password={confirmPassword} setPassword={setConfirmPassword} error={confirmPasswordError} setError={setConfirmPasswordError}/>
-                <button className="mt-[1.7rem] py-4 w-44 colored-button border border-transparent hover:border-white font-bold" onClick={sendLoginData}>Continue</button>
-            </div>
-        )
-    }
-
-    let contentToLoad = <PasswordPanel />;
+    let contentToLoad = <div className="bg-semi-black rounded-md border border-gray w-[40rem] flex flex-col items-center pt-6 pb-12 px-16">
+    <img src="/images/models/lock.png" alt="lock" className="w-60" />
+    <p className="font-bold text-5xl leading-[140%] mb-6">RESET PASSWORD</p>
+    <p className="text-gray font-bold leading-[140%] text-center mb-12 small">Write a new password that doesn’t match your previous one. (and remember it this time)</p>
+    <PasswordField label="New Password*" password={newPassword} setPassword={setNewPassword} error={newPasswordError} setError={setNewPasswordError}/>
+    <PasswordField label="Confirm New Password*" password={confirmPassword} setPassword={setConfirmPassword} error={confirmPasswordError} setError={setConfirmPasswordError}/>
+    <button className="mt-[1.7rem] py-4 w-44 colored-button border border-transparent hover:border-white font-bold" onClick={sendLoginData}>Continue</button>
+</div>;
 
     switch (pageContent) {
         case 'invalid': contentToLoad = <LinkState title="THE LINK HAS EXPIRED" text="Your verification link has expired, if you still want to reset your password send another link." succes={false} />; break;
