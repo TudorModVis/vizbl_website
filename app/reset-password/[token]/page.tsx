@@ -14,7 +14,9 @@ export default function Page({ params }: { params: { token: string } }) {
     const [pageContent, setPageContent] = useState<string | null>(null);
 
     useEffect(() => {
-        fetch("https://server.studiomodvis.com/api/reset-password?token=" + params.token)
+        fetch("https://server.studiomodvis.com/api/reset-password?token=" + params.token, {
+            credentials: 'include'
+        })
         .then(res => {
            res.ok ? setPageContent('password') : setPageContent('invalid');
         });
