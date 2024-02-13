@@ -13,8 +13,7 @@ export default function Page({ params }: { params: { token: string, email: strin
 
     const [pageContent, setPageContent] = useState<string | null>(null);
     useEffect(() => {
-        console.log(encodeURIComponent(params.email));
-        fetch("https://server.studiomodvis.com/api/reset-password?token=" + params.token + "&email=" + encodeURIComponent(params.email), {
+        fetch("https://server.studiomodvis.com/api/reset-password?token=" + params.token + "&email=" + decodeURIComponent(params.email), {
             credentials: 'include'
         })
         .then(res => {
@@ -58,7 +57,7 @@ export default function Page({ params }: { params: { token: string, email: strin
             credentials: 'include',
             body: JSON.stringify({
                 token: params.token,
-                email: encodeURIComponent(params.email),
+                email: decodeURIComponent(params.email),
                 password: confirmPassword
             }),
         })
