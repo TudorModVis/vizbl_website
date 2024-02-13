@@ -4,7 +4,7 @@ import { useEffect, useState } from "react"
 import PasswordField from "./PasswordField";
 import LinkState from "@/app/shared/LinkState";
 
-export default function Page({ params }: { params: { token: string } }) {
+export default function Page({ params }: { params: { token: string, email: string } }) {
     const [newPassword, setNewPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
 
@@ -14,7 +14,7 @@ export default function Page({ params }: { params: { token: string } }) {
     const [pageContent, setPageContent] = useState<string | null>(null);
 
     useEffect(() => {
-        fetch("https://server.studiomodvis.com/api/reset-password?token=" + params.token, {
+        fetch("https://server.studiomodvis.com/api/reset-password?token=" + params.token + "&email=" + params.email, {
             credentials: 'include'
         })
         .then(res => {
@@ -58,6 +58,7 @@ export default function Page({ params }: { params: { token: string } }) {
             credentials: 'include',
             body: JSON.stringify({
                 token: params.token,
+                email: params.email,
                 password: confirmPassword
             }),
         })

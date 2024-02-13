@@ -110,3 +110,32 @@ html {
 .MuiInput-root.error {
   animation: horizontal-shaking 0.3s;
 }
+
+.particle {
+  border-radius: 5px;
+  transition: .3s;
+}
+
+.particle.left {
+  background: linear-gradient(to left, #52B8FF 50%, transparent 50%);
+  background-size: 200% 200%;
+  background-position: 100% 0%;
+}
+
+.particle.left.pink {
+  background: linear-gradient(to left, #FDA2FF 50%, transparent 50%);
+  background-size: 200% 200%;
+  background-position: 100% 0%;
+}
+
+.particle.right {
+  background: linear-gradient(to right, #FDA2FF 50%, transparent 50%);
+  background-size: 200% 200%;
+  background-position: 200% 0%;
+}
+
+.particle.right.aqua {
+  background: linear-gradient(to right, #52B8FF 50%, transparent 50%);
+  background-size: 200% 200%;
+  background-position: 200% 0%;
+}
