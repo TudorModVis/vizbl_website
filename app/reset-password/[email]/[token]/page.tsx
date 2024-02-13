@@ -14,7 +14,7 @@ export default function Page({ params }: { params: { token: string, email: strin
     const [pageContent, setPageContent] = useState<string | null>(null);
 
     useEffect(() => {
-        fetch("https://server.studiomodvis.com/api/reset-password?token=" + params.token + "&email=" + params.email, {
+        fetch("https://server.studiomodvis.com/api/reset-password?token=" + params.token + "&email=" + encodeURIComponent(params.email), {
             credentials: 'include'
         })
         .then(res => {
