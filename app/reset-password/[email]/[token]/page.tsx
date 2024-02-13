@@ -12,8 +12,8 @@ export default function Page({ params }: { params: { token: string, email: strin
     const [confirmPasswordError, setConfirmPasswordError] = useState<string | null>(null);
 
     const [pageContent, setPageContent] = useState<string | null>(null);
-
     useEffect(() => {
+        console.log(encodeURIComponent(params.email));
         fetch("https://server.studiomodvis.com/api/reset-password?token=" + params.token + "&email=" + encodeURIComponent(params.email), {
             credentials: 'include'
         })
@@ -58,7 +58,7 @@ export default function Page({ params }: { params: { token: string, email: strin
             credentials: 'include',
             body: JSON.stringify({
                 token: params.token,
-                email: params.email,
+                email: encodeURIComponent(params.email),
                 password: confirmPassword
             }),
         })
