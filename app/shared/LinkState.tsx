@@ -9,7 +9,7 @@ const LinkState: React.FC<LinkStateProps> =  ({title, text, succes}) => {
     const finalText = succes ? "Open the extension to continue." : "Open the extension to resend the link.";
 
     return (
-        <div className="w-[36.75rem] flex flex-col items-center">
+        <div className="w-[40.75rem] flex flex-col items-center">
             <img src={imageSrc} alt="gif" className="w-60" />
             <p className="font-bold text-[4rem] leading-[140%] mb-12 text-center">{title}</p>
             <p className="text-gray text-2xl font-bold leading-[140%] text-center mb-12">{text}</p>
