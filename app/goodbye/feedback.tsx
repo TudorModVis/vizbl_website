@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 interface feedbackProps {
     setIsSent: (value: boolean) => void
@@ -10,14 +10,6 @@ export default function Feedback ({setIsSent}: feedbackProps) {
     const [reasons, setReasons] = useState<Array<string>>([]);
     const [otherCheck ,setOtherCheck] = useState(false);
     const [other, setOther] = useState('');
-
-    useEffect(() => {
-        fetch("https://server.studiomodvis.com/api/logout", {
-              method: "POST",
-              mode: "cors"
-          })
-          .catch(error => console.error('Error when /api/log-out: ', error));
-    }, []);
 
     const sendFeedback = () => {
         fetch("https://server.studiomodvis.com/api/feedback", {
